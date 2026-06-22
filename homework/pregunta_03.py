@@ -15,3 +15,29 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+    lista_letras = []
+    letras = ["A","B","C","D","E"]
+    with open("files\input\data.csv", "r") as file:
+        for linea in file:
+            columns = linea.split("\t")
+            lista_letras.append((columns[0],int(columns[1])))
+
+    acumulador = {}
+
+    for letra, numero in lista_letras:
+    
+        if letra in acumulador:
+            acumulador[letra] += numero
+        else:
+            acumulador[letra] = 0 + numero
+    lista_final = []
+    
+    for clave, valor in acumulador.items():
+        lista_final.append((clave, valor))
+
+    lista_final = sorted(lista_final, key=lambda x: (x[0], -x[1]))
+            
+    print(lista_final)
+            
+
+pregunta_03()

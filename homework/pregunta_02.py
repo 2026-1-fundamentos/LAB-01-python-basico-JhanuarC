@@ -15,3 +15,19 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
+    lista_letras = []
+    letras = ["A","B","C","D","E"]
+    lista_final = []
+
+    with open("files\input\data.csv", "r") as file:
+        for linea in file:
+            columns = linea.split("\t")
+            lista_letras.append(columns[0])
+            
+    lista_letras.sort()
+    
+    for letra in letras:
+        lista_final.append((letra,lista_letras.count(letra)))
+
+    
+    return lista_final
