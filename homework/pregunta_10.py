@@ -20,3 +20,14 @@ def pregunta_10():
 
 
     """
+    lista_valor = []
+
+    with open("files\input\data.csv", "r") as file:
+        for linea in file:
+            columns = linea.split("\t")
+            suma_c_4  = len(columns[3].split(","))
+            suma_c_5  = len(columns[4].replace("\n","").split(","))
+            lista_valor.append((columns[0],suma_c_4,suma_c_5))
+
+    return lista_valor
+

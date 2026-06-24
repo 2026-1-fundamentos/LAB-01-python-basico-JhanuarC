@@ -37,7 +37,4 @@ def pregunta_03():
 
     lista_final = sorted(lista_final, key=lambda x: (x[0], -x[1]))
             
-    print(lista_final)
-            
-
-pregunta_03()
+    return lista_final

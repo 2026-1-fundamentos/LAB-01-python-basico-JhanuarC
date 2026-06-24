@@ -26,3 +26,27 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+    lista_valor= []
+    with open("files\input\data.csv", "r") as file:
+        for linea in file:
+            columns = linea.split("\t")
+            columns_split = columns[4].replace("\n","").split(",")
+            for element in columns_split:   
+                element = element.split(":")
+                lista_valor.append((element[0],int(element[1])))
+    
+    valor = []
+    for i in lista_valor:
+        valor.append(i[0])
+    valor = sorted(set(valor))
+    
+
+    lista_rta = []
+
+    for i in valor:
+        filtro = [tup for tup in lista_valor if tup[0] == i]
+        maxi = max(filtro, key=lambda x: x[1])
+        mini = min(filtro, key=lambda x: x[1])
+        lista_rta.append((i,mini[1],maxi[1]))
+        
+    return lista_rta

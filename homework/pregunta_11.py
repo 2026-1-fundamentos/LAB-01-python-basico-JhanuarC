@@ -16,3 +16,26 @@ def pregunta_11():
 
 
     """
+    lista_valor = []
+
+    with open("files\input\data.csv", "r") as file:
+        for linea in file:
+            columns = linea.split("\t")
+            lista_valor.append((int(columns[1]),columns[3]))
+   
+   
+    #print(lista_valor)
+   
+   
+    dict_keys = {}
+    for element in lista_valor:
+        string = element[1].strip(",")
+        for i in string:
+            if i == ",":
+                pass
+            elif i in dict_keys:
+                dict_keys[i] += element[0]
+            else:
+                dict_keys[i] = element[0]
+    dict_keys =  dict(sorted(dict_keys.items()))
+    return dict_keys

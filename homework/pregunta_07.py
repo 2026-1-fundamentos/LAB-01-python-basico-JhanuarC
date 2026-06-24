@@ -25,3 +25,23 @@ def pregunta_07():
      (9, ['A', 'B', 'E', 'A', 'A', 'C'])]
 
     """
+    lista_valor = []
+    
+    with open("files\input\data.csv", "r") as file:
+        for linea in file:
+            columns = linea.split("\t")
+            lista_valor.append((columns[0],int(columns[1])))
+
+    rango = max(lista_valor,key=lambda x: x[1])#Numero mas alto dentro de las tuplas 
+    
+    lista_rta = []
+    for i in range(rango[1] + 1 ):
+        marker = []
+        for element in lista_valor: 
+            if i == element[1]:
+                marker.append(element[0])
+            else:
+                pass
+        lista_rta.append((i,marker))
+    
+    return lista_rta

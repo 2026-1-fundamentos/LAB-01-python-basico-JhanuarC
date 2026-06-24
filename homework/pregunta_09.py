@@ -24,3 +24,23 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    lista_valor = []
+
+    with open("files\input\data.csv", "r") as file:
+        for linea in file:
+            columns = linea.split("\t")
+            columns_split = columns[4].replace("\n","").split(",")
+            for i in columns_split:
+                i = i.split(":")
+                lista_valor.append(i[0])
+        
+    dic_keys = {}
+    for i in lista_valor:
+        if i in dic_keys:
+            dic_keys[i] += 1
+        else:
+            dic_keys[i] = 1
+
+    dic_keys = dict(sorted(dic_keys.items()))
+    
+    return dic_keys
